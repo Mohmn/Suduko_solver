@@ -24,8 +24,12 @@ class Suduko:
         if num_to_check in [self.board[i][col] for i in range(self.size)]:
             return False
 
-        # check grid
-        box_row,box_col = row//3 *3,col//3 *3
+        # check grid 
+        
+        # e.g  (0 to 2) // 3 == 0  (3,5)//3 == 1) and (1 * 3 == 3))   (6,8)//3 == 3 and (2*3 == 6) giving the starting grid positions
+#       adding 3 to starting positions gives us ending grid positions
+
+        box_row,box_col = row//3 *3,col//3 *3   
 
         for x in range(box_row,box_row + 3):
             for y in range(box_col,box_col+3):
@@ -44,9 +48,11 @@ class Suduko:
             while col < self.size:
                 
                 if self.board[row][col] == '.':
+                    
                     for num in self.numbers:
                         
                         if self.valid_move((row,col),num): # row,col,area
+                            
                             self.board[row][col] = num
                             self.empty_spaces -= 1
 
@@ -55,8 +61,10 @@ class Suduko:
 
                             self.board[row][col] = '.'
                             self.empty_spaces += 1
+                            
                     # if none of the numbers work then return false
                     return False
+                
                 col += 1
             row += 1
             col = 0
