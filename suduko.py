@@ -12,16 +12,16 @@ class Suduko:
                 if self.board[i][j] == '.':
                     self.empty_spaces +=1
 
-    def valid_move(self,pos,num):
+    def valid_move(self,pos,num_to_check):
 
         row,col = pos[0],pos[1]
 
         # check rows 
-        if num in self.board[row]:
+        if num_to_check in self.board[row]:
             return False
 
         # check column
-        if num in [self.board[i][col] for i in range(self.size)]:
+        if num_to_check in [self.board[i][col] for i in range(self.size)]:
             return False
 
         # check grid
@@ -29,7 +29,7 @@ class Suduko:
 
         for x in range(box_row,box_row + 3):
             for y in range(box_col,box_col+3):
-                if self.board[x][y] == num:
+                if self.board[x][y] == num_to_check:
                     return False
         return True
 
