@@ -39,11 +39,13 @@ class Suduko:
         if self.empty_spaces == 0:
             
             return True
-
+#     search through all empty values and try out numbers(1-10) for each value
         while row < self.size:
             while col < self.size:
+                
                 if self.board[row][col] == '.':
                     for num in self.numbers:
+                        
                         if self.valid_move((row,col),num): # row,col,area
                             self.board[row][col] = num
                             self.empty_spaces -= 1
