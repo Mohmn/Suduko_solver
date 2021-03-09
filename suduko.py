@@ -3,7 +3,7 @@ class Suduko:
     def __init__(self,board):
 
         self.empty_spaces = 0
-        self.size = 9
+        self.size = board[0].length
         self.board = board
         self.numbers = [str(i) for i in range(1,10)]
 
